@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 22:10:09 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/13 17:51:00 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/21 22:03:52 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void					check_dead(t_data *data, int i);
 void					start_sim(t_data *data);
 //time funcions -
 
-void					ft_usleep(u_int64_t sleep_time, t_data *data);
+void					ft_usleep(long int sleep_time, t_data *data);
 long int				get_time(t_data *data);
 
 //init

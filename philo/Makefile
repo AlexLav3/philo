@@ -1,5 +1,5 @@
 NAME = philo
-CC = cc -g -fsanitize=thread
+CC = cc -g -Wall -Werror -Wextra
 CFLAGS =  -pthread 
 
 SOURCES = main.c init.c utils.c time.c malloc_clean.c simulation.c start_state.c monitor.c

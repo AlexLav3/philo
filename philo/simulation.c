@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:32:16 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/13 17:54:31 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/21 22:04:29 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	*routine(void *arg)
 {
 	t_philo	*philo;
-	int		i;
 
 	philo = (t_philo *)arg;
-	i = 0;
 	if (philo->data->start)
 	{
 		if (philo->id_phil % 2 != 0)
