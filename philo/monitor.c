@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:25:43 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/22 23:50:46 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:57:10 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	update_last_meal(t_philo *philo)
 	if (philo->data->max_m > 0 && ++philo->meals == philo->data->max_m)
 	{
 		philo->v_full = 1;
-		printf("philo %d is full\n", philo->id_phil); //remove
+		printf("philo %d is full\n", philo->id_phil);
 	}
 	pthread_mutex_unlock(&philo->last_m);
 }
@@ -68,7 +68,7 @@ int	check_dead(t_data *data, int i)
 int	check_all_full(t_data *data, int i)
 {
 	if (pthread_mutex_lock(&data->philos[i].last_m))
-		return 0;
+		return (0);
 	if (data->philos[i].v_full == 1 && data->philos[i].counted == 0)
 	{
 		data->full_count++;

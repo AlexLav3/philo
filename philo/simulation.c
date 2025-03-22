@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:32:16 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/22 23:50:32 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:57:21 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	*routine(void *arg)
 				break ;
 			else if (pick_forks(philo) == 1)
 			{
-				if(!set_state(philo, EAT))
-					return NULL;
+				if (!set_state(philo, EAT))
+					return (NULL);
 				update_last_meal(philo);
 				ft_usleep(philo->data->eat_time, philo->data);
 				drop_forks(philo);
