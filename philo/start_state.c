@@ -6,17 +6,18 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:33:05 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/21 22:05:30 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:49:53 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	set_state(t_philo *philo, int state)
+int	set_state(t_philo *philo, int state)
 {
-	if (!philo || !philo->data || check_end(philo))
-		return ;
+	if (check_end(philo))
+		return (0);
 	write_stat(philo, state);
+	return (1);
 }
 
 int	get_state(t_philo *philo)
@@ -40,11 +41,13 @@ void	start_sim(t_data *data)
 	data->start = 1;
 	while (i < data->total)
 	{
-		pthread_create(&data->philos[i].philos_thread, NULL, routine,
-			&data->philos[i]);
+		if (pthread_create(&data->philos[i].philos_thread, NULL, routine,
+				&data->philos[i]))
+			return ;
 		i++;
 	}
-	pthread_create(&data->monitor, NULL, monitor, (void *)data);
+	if (pthread_create(&data->monitor, NULL, monitor, (void *)data))
+		return ;
 	pthread_join(data->monitor, NULL);
 	i = 0;
 	while (i < data->total)
@@ -56,18 +59,17 @@ void	start_sim(t_data *data)
 
 void	write_stat(t_philo *philo, int state)
 {
-	if (pthread_mutex_lock(&philo->m_state) == 0)
-	{
-		philo->state = state;
-		if (state == EAT)
-			printf("%ld, philo %d is eating\n", get_time(philo->data),
+	if (pthread_mutex_lock(&philo->m_state))
+		return ;
+	philo->state = state;
+	if (state == EAT)
+		printf("%ld, philo %d is eating\n", get_time(philo->data),
 				philo->id_phil);
-		else if (state == SLEEP)
-			printf("%ld, philo %d is sleeping\n", get_time(philo->data),
+	else if (state == SLEEP)
+		printf("%ld, philo %d is sleeping\n", get_time(philo->data),
 				philo->id_phil);
-		else if (state == THINK)
-			printf("%ld, philo %d is thinking\n", get_time(philo->data),
+	else if (state == THINK)
+		printf("%ld, philo %d is thinking\n", get_time(philo->data),
 				philo->id_phil);
-		pthread_mutex_unlock(&philo->m_state);
-	}
+	pthread_mutex_unlock(&philo->m_state);
 }

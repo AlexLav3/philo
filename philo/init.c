@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 04:32:13 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/12 23:15:43 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:42:58 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ void	init_philos(t_data *data)
 void	full_init(t_data *data)
 {
 	int	i;
-
-	i = 0;
+	
 	data->end = 0;
 	if (data->total == 1)
 		data->end = 1;
@@ -82,8 +81,13 @@ void	full_init(t_data *data)
 	data->full_count = 0;
 	data->start_time = 0;
 	data->philos = malloc(sizeof(t_philo) * data->total);
+	if(!data->philos)
+		return ; 
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->total);
+	if(!data->forks)
+		return ;
 	pthread_mutex_init(&data->m_end, NULL);
+	i = 0;
 	while (i < data->total)
 	{
 		pthread_mutex_init(&data->forks[i], NULL);

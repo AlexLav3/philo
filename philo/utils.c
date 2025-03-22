@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 04:17:11 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/04 16:41:40 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:44:35 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,23 @@ int	ft_atoi(const char *nptr)
 
 int	is_numeric(char **argv, int i, int j)
 {
-	while (argv[j])
-	{
-		while (argv[j][i])
-		{
-			if (argv[j][i] < '0' || argv[j][i] > '9' || ft_strlen(argv[j]) > 10)
-				return (0);
-			i++;
-		}
-		i = 0;
-		j++;
-	}
-	return (1);
+	int num = 0;
+
+    while (argv[j])
+    {
+        while (argv[j][i])
+        {
+            if (argv[j][i] < '0' || argv[j][i] > '9')
+                return (0);
+
+            if (num > INT_MAX / 10 || (num == INT_MAX / 10 && (argv[j][i] - '0') > INT_MAX % 10))
+                return (0);
+            num = num * 10 + (argv[j][i] - '0');
+            i++;
+        }
+        num = 0;
+        i = 0;
+        j++;
+    }
+    return (1);
 }

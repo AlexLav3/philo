@@ -6,13 +6,14 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 22:10:09 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/21 22:03:52 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:50:08 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
+# include <limits.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -71,7 +72,7 @@ void					write_stat(t_philo *philo, int state);
 
 void					update_last_meal(t_philo *philo);
 int						check_all_full(t_data *data, int i);
-void					check_dead(t_data *data, int i);
+int						check_dead(t_data *data, int i);
 void					start_sim(t_data *data);
 //time funcions -
 
@@ -96,7 +97,7 @@ int						pick_forks(t_philo *philo);
 int						drop_forks(t_philo *philo);
 
 //set state?
-void					set_state(t_philo *philo, int state);
+int						set_state(t_philo *philo, int state);
 int						get_state(t_philo *philo);
 void					die(t_data *data, int i);
 void					start_sim(t_data *data);
