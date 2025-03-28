@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 04:32:13 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/22 23:56:50 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/28 17:13:36 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	full_init(t_data *data)
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->total);
 	if (!data->forks)
 		return ;
-	pthread_mutex_init(&data->m_end, NULL); // protection?
+	pthread_mutex_init(&data->m_end, NULL);
 	i = 0;
 	while (i < data->total)
 	{
