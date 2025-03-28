@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:32:16 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/28 17:24:04 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/28 22:04:38 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ void	*routine(void *arg)
 		while (1)
 		{
 			if (check_end(philo))
-				break ;
+				break;
 			else if (pick_forks(philo))
 			{
 				if (!set_state(philo, EAT))
 					return (NULL);
 				update_last_meal(philo);
 				ft_usleep(philo->data->eat_time, philo->data);
+				drop_forks(philo);
 			}
 			set_state(philo, SLEEP);
 			ft_usleep(philo->data->sleep_time, philo->data);
@@ -61,7 +62,6 @@ int	drop_forks(t_philo *philo)
 int	check_end(t_philo *philo)
 {
 	int	end;
-
 	pthread_mutex_lock(&philo->data->m_end);
 	end = philo->data->end;
 	pthread_mutex_unlock(&philo->data->m_end);
