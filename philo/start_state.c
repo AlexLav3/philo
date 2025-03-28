@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:33:05 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/28 22:04:22 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/28 22:09:06 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	set_state(t_philo *philo, int state)
 {
 	if (check_end(philo))
 	{
-		if(state == EAT)
+		if (state == EAT)
 			drop_forks(philo);
 		return (0);
 	}
@@ -73,9 +73,9 @@ void	write_stat(t_philo *philo, int state)
 	}
 	else if (state == SLEEP)
 		printf("%ld, philo %d is sleeping\n", get_time(philo->data),
-				philo->id_phil);
+			philo->id_phil);
 	else if (state == THINK)
 		printf("%ld, philo %d is thinking\n", get_time(philo->data),
-				philo->id_phil);
+			philo->id_phil);
 	pthread_mutex_unlock(&philo->m_state);
 }

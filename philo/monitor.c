@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:25:43 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/28 21:56:53 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/28 22:08:49 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,8 @@ int	check_all_full(t_data *data, int i)
 		if (pthread_mutex_lock(&data->m_end))
 			return (0);
 		data->end = 1;
-		pthread_mutex_unlock(&data->philos[i].last_m);		
+		pthread_mutex_unlock(&data->philos[i].last_m);
 		pthread_mutex_unlock(&data->m_end);
-
 		return (1);
 	}
 	pthread_mutex_unlock(&data->philos[i].last_m);
