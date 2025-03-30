@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:32:16 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/28 22:08:43 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/03/30 21:34:41 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*routine(void *arg)
 	if (philo->data->start)
 	{
 		if (philo->id_phil % 2 != 0)
-			ft_usleep(100, philo->data);
+			set_state(philo, IDLE);
 		while (1)
 		{
 			if (check_end(philo))
