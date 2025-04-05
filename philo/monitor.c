@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:25:43 by elavrich          #+#    #+#             */
-/*   Updated: 2025/04/05 13:55:41 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/04/05 13:56:42 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ int	check_dead(t_data *data, int i)
 	{
 		if (pthread_mutex_lock(&data->m_end))
 			return (0);
-		//printf("last meal: %ld\n", time_l_m);
-		//printf("last meal of philo: %ld\n", data->philos[i].last_meal);
 		data->end = 1;
 		pthread_mutex_unlock(&data->m_end);
 		printf("%ld, philo %d died\n", get_time(data), data->philos[i].id_phil);
