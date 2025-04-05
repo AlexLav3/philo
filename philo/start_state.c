@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:33:05 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/30 21:35:26 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/04/05 13:44:29 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,9 @@ void	write_stat(t_philo *philo, int state)
 		printf("%ld, philo %d is thinking\n", get_time(philo->data),
 			philo->id_phil);
 	else if (state == IDLE)
-	{
 		printf("%ld, philo %d is thinking\n", get_time(philo->data),
 			philo->id_phil);
-		ft_usleep(100, philo->data);
-	}
+	else if (state == FORK)
+		printf("%ld, philo %d took a fork\n", get_time(philo->data), philo->id_phil);
 	pthread_mutex_unlock(&philo->m_state);
 }

@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:32:16 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/30 21:34:41 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/04/05 13:43:49 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,16 @@ void	*routine(void *arg)
 
 int	pick_forks(t_philo *philo)
 {
-	if (pthread_mutex_lock(philo->left_f) == 0)
+	if(check_end(philo))
+		return (0);
+	else if (pthread_mutex_lock(philo->left_f) == 0)
 	{
+		set_state(philo, FORK);
 		if (pthread_mutex_lock(philo->right_f) == 0)
+		{
+			set_state(philo, FORK);
 			return (1);
+		}
 		pthread_mutex_unlock(philo->left_f);
 	}
 	return (0);

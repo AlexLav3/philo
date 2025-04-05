@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 22:10:09 by elavrich          #+#    #+#             */
-/*   Updated: 2025/03/22 23:50:08 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/04/05 13:44:40 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define DEAD 4
 # define IDLE 5
 # define END 6
+# define FORK 7
 
 typedef pthread_mutex_t	t_mx;
 typedef struct philo	t_philo;
