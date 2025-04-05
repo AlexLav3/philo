@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:33:05 by elavrich          #+#    #+#             */
-/*   Updated: 2025/04/05 13:44:29 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/04/05 13:48:40 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,8 @@ void	write_stat(t_philo *philo, int state)
 		return ;
 	philo->state = state;
 	if (state == EAT)
-	{
 		printf("%ld, philo %d is eating\n", get_time(philo->data),
 			philo->id_phil);
-	}
 	else if (state == SLEEP)
 		printf("%ld, philo %d is sleeping\n", get_time(philo->data),
 			philo->id_phil);
