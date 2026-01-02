@@ -12,6 +12,7 @@ This project is a simulation of the classic Dining Philosophers problem, a concu
 - If a philosopher doesn't eat within a time threshold, they die.
 - There must be no data races
 - There has to be no unlocks of already unlocked mutexes
-- Number of philosophers = number of forks 
+- Number of philosophers = number of forks
+- Philosophers cannot share information with each other
 
 <img width="500" height="500" alt="dining-phil" src="https://github.com/user-attachments/assets/2711a330-3e3d-4d00-82cf-cf0c92cba9b0" />
